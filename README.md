@@ -7,6 +7,6 @@ Para correr estas migraciones son necesarios ciertos comandos en la terminal:
 
 Al ejecutar 'npx sequelize-cli db:migrate' en la terminal, se genera automáticamente una tabla "sequelizemeta" junto a las tablas pendientes. Esta tabla guarda un registro de los cambios que se hacen a las demás tablas, permitiéndome volverlas a estados anteriores.
 
-Ejecutando 'npx sequelize-cli db:migrate:undo' se revierte la última migración ejecutada y elimina el registro en "sequelizemeta"
+Ejecutando <strong>npx sequelize-cli db:migrate:undo </strong> se revierte la última migración ejecutada y elimina el registro en "sequelizemeta"
 
 Por último, ejecutando 'npx sequelize-cli db:migrate:undo:all' revierte todas las migraciones hechas. 
