@@ -25,12 +25,16 @@ const User = require("./User");
 const Product = require("./Products");
 const Category = require("./Category");
 const Subcategory = require("./Subcategory");
+const Cart = require("./Cart");
+const CartItem = require("./CartItem");
 
 // Inicializar todos los modelos:
 User.initModel(sequelize);
 Product.initModel(sequelize);
 Category.initModel(sequelize);
 Subcategory.initModel(sequelize);
+Cart.initModel(sequelize);
+CartItem.initModel(sequelize);
 
 // Definir las relaciones entre los modelos:
 Category.hasMany(Subcategory, {
@@ -77,16 +81,48 @@ Product.belongsTo(Subcategory, {
   onUpdate: 'CASCADE'
 });
 
-// Opcional: Relación con User (si quieres trackear quién crea productos)
-// User.hasMany(Product, {
-//   foreignKey: 'createdBy',
-//   as: 'createdProducts'
-// });
-// 
-// Product.belongsTo(User, {
-//   foreignKey: 'createdBy',
-//   as: 'creator'
-// });
+// Relaciones de Cart
+User.hasMany(Cart, {
+  foreignKey: 'userId',
+  as: 'carts',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
+});
+
+Cart.belongsTo(User, {
+  foreignKey: 'userId',
+  as: 'user',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
+});
+
+Cart.hasMany(CartItem, {
+  foreignKey: 'cartId',
+  as: 'items',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
+});
+
+CartItem.belongsTo(Cart, {
+  foreignKey: 'cartId',
+  as: 'cart',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
+});
+
+CartItem.belongsTo(Product, {
+  foreignKey: 'productId',
+  as: 'product',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
+});
+
+Product.hasMany(CartItem, {
+  foreignKey: 'productId',
+  as: 'cartItems',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
+});
 
 module.exports = {
   sequelize,
@@ -94,4 +130,6 @@ module.exports = {
   Product,
   Category,
   Subcategory,
+  Cart,
+  CartItem,
 };
