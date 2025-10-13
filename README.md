@@ -24,5 +24,7 @@ When executed, these files create the pending tables in the project.
 
 Running Migrations
 npx sequelize-cli db:migrate runs all pending migrations and creates SequelizeMeta table that tracks executed migrations. 
+
 npx sequelize-cli db:migrate:undo reverts the last executed migration and removes its record from SequelizeMeta.
+
 npx sequelize-cli db:migrate:undo:all reverts all executed migrations.
