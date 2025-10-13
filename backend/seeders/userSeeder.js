@@ -20,7 +20,7 @@ const { User } = require("../models");
 module.exports = async () => {
   const users = [];
 
-  // Usuario administrador por defecto
+  // Usuario administrador
   users.push({
     name: "Admin Mizu",
     email: "admin@mizu.com",
