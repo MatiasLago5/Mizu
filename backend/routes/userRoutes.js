@@ -14,7 +14,7 @@ router.post("/login", userController.login);
 router.get("/profile", auth, userController.profile);
 
 // Cambiar contraseña del usuario
-router.post("/change-password", auth, userController.changePassword);
+router.put("/change-password", auth, userController.changePassword);
 
 // Listar todos los usuarios 
 router.get("/", auth, auth.requiereRol("admin"), userController.index);

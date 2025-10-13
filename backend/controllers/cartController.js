@@ -194,5 +194,4 @@ module.exports = {
   updateItem,
   removeItem,
   clearCart,
-  renderActiveCart,
 };
