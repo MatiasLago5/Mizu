@@ -15,11 +15,17 @@ The goal of this project is to create a Fullstack web application, integrating b
 The app uses MySQL as its database and is built with Sequelize.
 
 Database tables are generated through migrations (located in the /migrations folder).
+
 Each migration is a .js file with a timestamp and numeric order, e.g.
+
 20251009-001-user.js or 20251009-002-products-categories.js.
+
 When executed, these files create the pending tables in the project.
 
 Running Migrations
+
 npx sequelize-cli db:migrate runs all pending migrations and creates SequelizeMeta table that tracks executed migrations. 
+
 npx sequelize-cli db:migrate:undo reverts the last executed migration and removes its record from SequelizeMeta.
+
 npx sequelize-cli db:migrate:undo:all reverts all executed migrations.
