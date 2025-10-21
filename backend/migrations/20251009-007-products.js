@@ -52,9 +52,10 @@ module.exports = {
         allowNull: false,
         defaultValue: true,
       },
-      imageUrl: {
-        type: Sequelize.STRING,
+      discountPercentage: {
+        type: Sequelize.DECIMAL(5, 2),
         allowNull: true,
+        defaultValue: 0.0,
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -67,7 +68,7 @@ module.exports = {
     });
   },
 
-  down: async (queryInterface, Sequelize) => {
+  down: async (queryInterface) => {
     await queryInterface.dropTable('Products');
   },
 };

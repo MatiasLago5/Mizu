@@ -50,7 +50,7 @@ module.exports = {
     });
   },
 
-  down: async (queryInterface, Sequelize) => {
+  down: async (queryInterface) => {
     await queryInterface.removeConstraint('ProductsSubcategories', 'products_subcategories_name_category_unique');
     await queryInterface.dropTable('ProductsSubcategories');
   },
