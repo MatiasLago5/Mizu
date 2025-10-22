@@ -5,8 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "tables": "node createDatabaseTables.js",
-    "seeders": "node seeders/runAllSeeders.js"
+    "tablesUp": "npx sequelize-cli db:migrate",
+    "seeders": "node seeders/runAllSeeders.js",
+    "allTablesDown": "npx sequelize-cli db:migrate:undo:all",
+    "undoMigrate": "npx sequelize-cli db:migrate:undo"
   },
   "keywords": [],
   "author": "Hack Academy",

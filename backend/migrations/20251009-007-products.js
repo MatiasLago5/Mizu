@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 
 /** @type {import('sequelize-cli').Migration} */
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Products', {
+    await queryInterface.createTable("Products", {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
@@ -26,21 +26,21 @@ module.exports = {
         type: Sequelize.UUID,
         allowNull: false,
         references: {
-          model: 'ProductsCategories',
-          key: 'id',
+          model: "ProductsCategories",
+          key: "id",
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
       subcategoryId: {
         type: Sequelize.UUID,
         allowNull: true,
         references: {
-          model: 'ProductsSubcategories',
-          key: 'id',
+          model: "ProductsSubcategories",
+          key: "id",
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       stock: {
         type: Sequelize.INTEGER,
@@ -65,10 +65,14 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
       },
+      imageUrl: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
     });
   },
 
   down: async (queryInterface) => {
-    await queryInterface.dropTable('Products');
+    await queryInterface.dropTable("Products");
   },
 };
